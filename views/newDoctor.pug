@@ -1,0 +1,53 @@
+extends layout
+
+block content
+    script(src="/javascripts/doctors.js")
+    #addForm(class='container')
+        .row.justify-content-center
+            .col-12.col-md-8.col-lg-6.pb-5
+                form(@submit.prevent='processAdd')
+                    .card.border-primary.rounded-0
+                        .card-header.p-0
+                            .bg-info.text-white.text-center.py-2
+                                h3
+                                    |  Alta de Doctor
+                        .card-body.p-3
+                            .form-group
+                            .input-group.mb-2
+                                .input-group-prepend
+                                .input-group-text
+                                    i.fa.fa-id-badge.text-info
+                                input#idHospital.form-control(type='text',name='idHospital',placeholder='Id de Hospital',required='',v-model="idHospital")
+                            .form-group
+                            .input-group.mb-2
+                                .input-group-prepend
+                                .input-group-text
+                                    i.fa.fa-user-circle.text-info
+                                input#name2.form-control(type='text', name='name2', placeholder='Nombre', required='', v-model="name2")
+                            .form-group
+                            .input-group.mb-2
+                                .input-group-prepend
+                                .input-group-text
+                                    i.fa.fa-info.text-info
+                                input#lastname.form-control(type='text',name='lastname',placeholder='Primer Apellido',required='',v-model="lastname")
+                            .form-group
+                            .input-group.mb-2
+                                .input-group-prepend
+                                .input-group-text
+                                    i.fa.fa-info.text-info
+                                input#secondlastname.form-control(type='text',name='secondlastname',placeholder='Segundo Apellido',required='',v-model="secondlastname")
+                            .form-group
+                            .input-group.mb-2
+                                .input-group-prepend
+                                .input-group-text
+                                    i.fa.fa-id-card.text-info
+                                input#profesionalid.form-control(type='text',name='profesionalid',placeholder='Id profesional',required='',v-model="profesionalid")
+                            .form-group
+                            .input-group.mb-2
+                                .input-group-prepend
+                                .input-group-text
+                                    i.fa.fa-address-book.text-info
+                                input#bcaddress.form-control(type='text',name='bcaddress',placeholder='Dirección',required='',v-model="bcaddress")
+                            .text-center
+                                button.btn.btn-info.btn-block.rounded-0.py-2 Guardar
+                    

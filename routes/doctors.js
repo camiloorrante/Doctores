@@ -1,24 +1,33 @@
 var express = require('express');
 var router = express.Router();
+var models = require ('../models');
+var request = require('request-promise');
 
 /* Obtener todos los doctores*/
 router.get('/', function(req, res, next) {
-    var doctores = {doc: 'x'};
-    res.json({doctores: JSON.stringify(doctores)});
+    request('http://localhost:3000/api/doctors').then((resp)=>{
+        console.log(resp);
+        res.render('doctoresList', {doctores: JSON.parse(resp) });
+    });
+});
+router.get('/new', function(req, res, next){
+    res.render('newDoctor');
 });
 
-// crear un nuevo doctor
-router.post('/', function(req, res, next){
-//logica para insertar un nuevo doctor con sequelize
-});
+router.get('/edit/:id', function(req, res, next){
+      //  res.render('newDoctor', {doctores: JSON.parse(id)});
+    res.json({id:req.params.id});
+    models.doctores.find({
+        where:{
+            id: req.params.id
+        }
+    }).then(function (resp){
+        if(resp){
+            resp.updateAttributes({
 
-router.put('/', function(req, res, next){
-//logica para hacer update a doctor con sequelize
-});
-
-//borrar un doctor de la BD
-router.delete('/', function(req, res, next){
-
+            })
+        }
+    })
 });
 
 

@@ -1,0 +1,35 @@
+extends layout
+
+block content
+    script(src="/javascripts/doctors.js")
+    h3 Catálogo de doctores
+        button(class = 'pull-right',v-bind:href='new').btn.btn-success.btn-xs Agregar
+
+    table.table
+        tr(class = 'bg-primary')
+            th(scope='col') Id Hospital
+            th(scope='col') Nombre
+            th(scope='col') Primer Apellido
+            th(scope='col') Segundo Apellido
+            th(scope='col') Id Profesional
+            th(scope='col') Dirección
+            th(scope='col') Id Profesional
+            th(scope='col') Dirección
+
+        
+        each val in doctores
+            tr
+                td  #{val.idHospital}
+                td  #{val.name}
+                td  #{val.lastname} 
+                td  #{val.secondlastname}
+                td  #{val.profesionalid}
+                td  #{val.bcaddress}
+                td
+                    p(data-placement='top' data-toggle='tooltip' title='Edit')
+                        button.btn.btn-primary.btn-sm(data-title='Edit' data-toggle='modal' data-target='#edit',v-on:click='addForm') Editar
+                td
+                    p(data-placement='top' data-toggle='tooltip' title='Delete')
+                        button.btn.btn-danger.btn-sm(data-title='Delete' data-toggle='modal' data-target='#delete') Eliminar
+
+        
